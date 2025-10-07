@@ -21,7 +21,44 @@ jobs:
       - name: Rebuild APK with apktool
         run: |
           mkdir -p artifacts
-          java -jar apktool_2.12.1.jar b controlcenter_mod -o artifacts/ControlCenter15-mod.apk
+          java -jar apktool_2.12.1.jar b controlcenter_mod -o artifacts/ControlCenter15-mod-unsigned.apk
+
+      - name: Install Android build tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y android-sdk-build-tools
+
+      - name: Zipalign APK
+        run: |
+          zipalign -v -p 4 artifacts/ControlCenter15-mod-unsigned.apk artifacts/ControlCenter15-mod-aligned.apk
+
+      - name: Decode signing keystore
+        if: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 --decode > android-signing-keystore.jks
+
+      - name: Sign APK
+        if: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          KEY_PASS=${KEY_PASSWORD:-$KEYSTORE_PASSWORD}
+          export KEY_PASS
+          apksigner sign \
+            --ks android-signing-keystore.jks \
+            --ks-pass env:KEYSTORE_PASSWORD \
+            --ks-key-alias "$KEY_ALIAS" \
+            --key-pass env:KEY_PASS \
+            artifacts/ControlCenter15-mod-aligned.apk
+          mv artifacts/ControlCenter15-mod-aligned.apk artifacts/ControlCenter15-mod.apk
+
+      - name: Use aligned APK when signing is skipped
+        if: ${{ secrets.ANDROID_KEYSTORE_BASE64 == '' }}
+        run: mv artifacts/ControlCenter15-mod-aligned.apk artifacts/ControlCenter15-mod.apk
 
       - name: Upload rebuilt APK
         uses: actions/upload-artifact@v4
