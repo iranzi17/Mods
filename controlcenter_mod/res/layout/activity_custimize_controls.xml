@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.core.widget.NestedScrollView android:id="@id/root_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <LinearLayout android:orientation="vertical" android:id="@id/linear_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:animateLayoutChanges="true">
+            <TextView android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/customize_control_center_message" />
+            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="0.0dip" android:text="@string/include" android:textAllCaps="true" />
+            <View android:background="@color/textlight30" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/list_choose" android:background="@android:color/white" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="0.0dip" android:text="@string/more_controls" android:textAllCaps="true" />
+            <View android:background="@color/textlight30" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+            <androidx.recyclerview.widget.RecyclerView android:layout_gravity="center|top" android:id="@id/list_apps" android:background="@android:color/white" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

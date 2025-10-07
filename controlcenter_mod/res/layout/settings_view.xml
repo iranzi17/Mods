@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:clipToPadding="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true" app:bounceDelay="400" app:damping="2.0" app:incrementalDamping="true" app:triggerOverScrollThreshold="36"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="26.0dip" layout="@layout/card_how_to_use" />
+        <LinearLayout android:orientation="vertical" android:id="@id/my_apps" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <View android:background="@color/divider_color" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="26.0dip" />
+            <com.luutinhit.customsettings.SettingsItem android:id="@id/launcher" android:layout_width="fill_parent" android:layout_height="wrap_content" app:settingIcon="@drawable/ic_launcher" app:settingText="@string/ios_launcher" />
+            <com.luutinhit.customsettings.SettingsItem android:id="@id/assistive_touch" android:layout_width="fill_parent" android:layout_height="wrap_content" app:settingIcon="@drawable/ic_assistive_touch" app:settingText="@string/assistive_touch" />
+            <com.luutinhit.customsettings.SettingsItem android:id="@id/lock_screen_notifications" android:layout_width="fill_parent" android:layout_height="wrap_content" app:hideDivider="true" app:settingIcon="@drawable/ic_notifications" app:settingText="@string/lock_screen_notifications" />
+        </LinearLayout>
+        <View android:background="@color/divider_color" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <View android:background="@color/divider_color" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="26.0dip" />
+        <com.luutinhit.customsettings.SettingsItem android:id="@id/size" android:layout_width="fill_parent" android:layout_height="wrap_content" app:settingIcon="@drawable/ic_resize" app:settingText="@string/size" />
+        <com.luutinhit.customsettings.SettingsItem android:id="@id/color" android:layout_width="fill_parent" android:layout_height="wrap_content" app:settingIcon="@drawable/ic_color" app:settingText="@string/color" />
+        <com.luutinhit.customsettings.SettingsItem android:id="@id/position" android:layout_width="fill_parent" android:layout_height="wrap_content" app:settingIcon="@drawable/ic_position" app:settingText="@string/position" />
+        <com.luutinhit.customsettings.SettingsItem android:id="@id/wallpaper" android:layout_width="fill_parent" android:layout_height="wrap_content" app:settingIcon="@drawable/ic_image" app:settingText="@string/background" />
+        <com.luutinhit.customsettings.SettingsItem android:id="@id/record" android:layout_width="fill_parent" android:layout_height="wrap_content" app:settingIcon="@drawable/ic_record_item" app:settingText="@string/record_setup" />
+        <com.luutinhit.customsettings.SettingsItem android:id="@id/music" android:layout_width="fill_parent" android:layout_height="wrap_content" app:settingIcon="@drawable/ic_music" app:settingText="@string/music_control" />
+        <com.luutinhit.customsettings.SettingsItem android:id="@id/custom_control" android:layout_width="fill_parent" android:layout_height="wrap_content" app:settingIcon="@drawable/ic_favorite" app:settingText="@string/customize_controls" />
+        <com.luutinhit.customsettings.SettingsItemSwitchView android:id="@id/vibration" android:layout_width="fill_parent" android:layout_height="wrap_content" app:defaultValue="true" app:key="vibrate" app:settingIcon="@drawable/ic_vibration" app:settingText="@string/vibration" />
+        <com.luutinhit.customsettings.SettingsItemSwitchView android:id="@id/notification" android:layout_width="fill_parent" android:layout_height="wrap_content" app:defaultValue="true" app:hideDivider="true" app:key="show_notification" app:settingIcon="@drawable/ic_notification" app:settingText="@string/show_notification" />
+        <View android:background="@color/divider_color" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <View android:background="@color/divider_color" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="26.0dip" />
+        <com.luutinhit.customsettings.SettingsItem android:id="@id/language" android:layout_width="fill_parent" android:layout_height="wrap_content" app:hideDivider="true" app:settingIcon="@drawable/ic_translate" app:settingText="@string/language" />
+        <View android:background="@color/divider_color" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <View android:background="@color/divider_color" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="26.0dip" />
+        <com.luutinhit.customsettings.SettingsItem android:id="@id/rate" android:layout_width="fill_parent" android:layout_height="wrap_content" app:settingIcon="@drawable/ic_star" app:settingText="@string/rate_title" />
+        <com.luutinhit.customsettings.SettingsItem android:id="@id/download" android:layout_width="fill_parent" android:layout_height="wrap_content" app:hideDivider="true" app:settingIcon="@drawable/ic_download" app:settingText="@string/download_other_app" />
+        <View android:background="@color/divider_color" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginBottom="26.0dip" />
+    </LinearLayout>
+</merge>

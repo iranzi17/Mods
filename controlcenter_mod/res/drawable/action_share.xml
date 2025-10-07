@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/blue" />
+        </shape>
+    </item>
+    <item android:id="@id/drawable_share" android:drawable="@drawable/ic_share" android:left="@dimen/margin_small_icon" android:top="@dimen/margin_small_icon" android:right="@dimen/margin_small_icon" android:bottom="@dimen/margin_small_icon" />
+</layer-list>

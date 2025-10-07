@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen android:key="record_preference_screen"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.preference.PreferenceCategory android:title="@string/video_config" android:key="category_video_config">
+        <androidx.preference.ListPreference android:icon="@drawable/ic_video_encode" android:title="@string/video_encoder" android:key="preference_video_encode" android:summary="%s" />
+        <androidx.preference.ListPreference android:icon="@drawable/ic_resize" android:entries="@array/video_resolutions_entry" android:title="@string/resolution" android:key="preference_resolution" android:summary="%s" android:defaultValue="480x360" android:entryValues="@array/video_resolutions_value" />
+        <androidx.preference.ListPreference android:icon="@drawable/ic_bitrate" android:entries="@array/video_bitrates_entry" android:title="@string/bitrate" android:key="preference_video_bitrate" android:summary="%s" android:defaultValue="5000" android:entryValues="@array/video_bitrates_value" />
+        <androidx.preference.ListPreference android:icon="@drawable/ic_frame" android:entries="@array/video_framerates_entry" android:title="@string/frame_rate" android:key="preference_frame_rate" android:summary="%s" android:defaultValue="15" android:entryValues="@array/video_framerates_value" />
+        <androidx.preference.ListPreference android:icon="@drawable/ic_iframe" android:entries="@array/iframeintervals_entry" android:title="@string/iframe_interval" android:key="preference_iframe" android:summary="%s" android:defaultValue="1" android:entryValues="@array/iframeintervals_value" />
+        <androidx.preference.ListPreference android:icon="@drawable/ic_profile" android:title="@string/avc_profile" android:key="preference_avc_profile" android:summary="%s" android:defaultValue="Default" />
+        <androidx.preference.ListPreference android:icon="@drawable/ic_orientation" android:entries="@array/orientations_entry" android:title="@string/orientation" android:key="preference_orientation" android:summary="%s" android:defaultValue="1" android:entryValues="@array/orientations_value" />
+        <androidx.preference.SwitchPreferenceCompat android:icon="@drawable/ic_music_expand" android:title="@string/record_with_audio" android:key="record_with_audio" android:summary="@string/record_with_audio_summary" android:defaultValue="false" />
+    </androidx.preference.PreferenceCategory>
+    <androidx.preference.PreferenceCategory android:title="@string/audio_config" android:key="category_audio_config">
+        <androidx.preference.ListPreference android:icon="@drawable/ic_music" android:title="@string/audio_encoder" android:key="preference_audio_encoder" android:summary="%s" />
+        <androidx.preference.ListPreference android:icon="@drawable/ic_channel" android:entries="@array/audio_channels_entry" android:title="@string/channels" android:key="preference_audio_channel" android:summary="%s" android:defaultValue="1" android:entryValues="@array/audio_channels_value" />
+        <androidx.preference.ListPreference android:icon="@drawable/ic_sample_rate" android:title="@string/sample_rate" android:key="preference_audio_sample_rate" android:summary="%s" />
+        <androidx.preference.ListPreference android:icon="@drawable/ic_bitrate" android:title="@string/bitrate" android:key="preference_audio_bitrate" />
+        <androidx.preference.ListPreference android:icon="@drawable/ic_profile" android:title="@string/aac_profile" android:key="preference_aac_profile" android:summary="%s" android:defaultValue="Default" />
+    </androidx.preference.PreferenceCategory>
+</androidx.preference.PreferenceScreen>

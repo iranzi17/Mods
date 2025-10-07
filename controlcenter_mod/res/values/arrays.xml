@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="audio_channels_entry">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="audio_channels_value">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="backgroundListEntry">
+        <item>@string/transparent</item>
+        <item>@string/current_wallpaper</item>
+        <item>@string/default_background</item>
+    </string-array>
+    <string-array name="backgroundListEntryBlur">
+        <item>@string/transparent</item>
+        <item>@string/current_wallpaper</item>
+        <item>@string/default_background</item>
+        <item>@string/screen_blur</item>
+    </string-array>
+    <string-array name="backgroundListEntryBlurTiramisu">
+        <item>@string/transparent</item>
+        <item>@string/default_background</item>
+        <item>@string/screen_blur</item>
+    </string-array>
+    <string-array name="backgroundListValue">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="backgroundListValueBlur">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="backgroundListValueBlurTiramisu">
+        <item>0</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <array name="google_colors">
+        <item>@color/red</item>
+        <item>@color/blue</item>
+        <item>@color/yellow</item>
+        <item>@color/green</item>
+    </array>
+    <string-array name="iframeintervals_entry">
+        <item>1</item>
+        <item>5</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+    </string-array>
+    <string-array name="iframeintervals_value">
+        <item>1</item>
+        <item>5</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+    </string-array>
+    <string-array name="listEntryLanguage">
+        <item>English</item>
+        <item>Afghanistan</item>
+        <item>Arabic</item>
+        <item>Azerbaijan</item>
+        <item>Belgium</item>
+        <item>Bulgaria</item>
+        <item>Brunei</item>
+        <item>Bahamas</item>
+        <item>Canada</item>
+        <item>Czech</item>
+        <item>Denmark</item>
+        <item>Germany</item>
+        <item>Bosnia</item>
+        <item>Spain</item>
+        <item>Ethiopia</item>
+        <item>Finland</item>
+        <item>Filipino</item>
+        <item>France</item>
+        <item>Gabon</item>
+        <item>Greenland</item>
+        <item>Guam</item>
+        <item>Maori</item>
+        <item>Hindi</item>
+        <item>Haiti</item>
+        <item>Hungary</item>
+        <item>India</item>
+        <item>Iceland</item>
+        <item>Italy</item>
+        <item>Japan</item>
+        <item>Java</item>
+        <item>Kazakh</item>
+        <item>Comoros</item>
+        <item>Kannada</item>
+        <item>Korea</item>
+        <item>Laos</item>
+        <item>Lithuania</item>
+        <item>Latvia</item>
+        <item>Madagascar</item>
+        <item>Maori</item>
+        <item>Macedonia</item>
+        <item>Mali</item>
+        <item>Mauritania</item>
+        <item>Montserrat</item>
+        <item>Maltese</item>
+        <item>Niger</item>
+        <item>Norway</item>
+        <item>Poland</item>
+        <item>Portugal</item>
+        <item>Romania</item>
+        <item>Russian</item>
+        <item>Slovenia</item>
+        <item>Slovakia</item>
+        <item>Sierra Leone</item>
+        <item>Somalia</item>
+        <item>Suriname</item>
+        <item>Sundanese</item>
+        <item>El Salvador</item>
+        <item>Swahili</item>
+        <item>Tamil</item>
+        <item>Telugu</item>
+        <item>Togo</item>
+        <item>Thailand</item>
+        <item>Turkey</item>
+        <item>Ukrainian</item>
+        <item>Urdu</item>
+        <item>Uzbekistan</item>
+        <item>Vietnam</item>
+        <item>Yoruba</item>
+        <item>Chinese</item>
+        <item>Zulu</item>
+    </string-array>
+    <string-array name="listValueLanguage">
+        <item>en</item>
+        <item>af</item>
+        <item>ar</item>
+        <item>az</item>
+        <item>be</item>
+        <item>bg</item>
+        <item>bn</item>
+        <item>bs</item>
+        <item>ca</item>
+        <item>cs</item>
+        <item>da</item>
+        <item>de</item>
+        <item>eo</item>
+        <item>es</item>
+        <item>et</item>
+        <item>fi</item>
+        <item>fil</item>
+        <item>fr</item>
+        <item>ga</item>
+        <item>gl</item>
+        <item>gu</item>
+        <item>ha</item>
+        <item>hi</item>
+        <item>ht</item>
+        <item>hu</item>
+        <item>in</item>
+        <item>is</item>
+        <item>it</item>
+        <item>ja</item>
+        <item>jv</item>
+        <item>kk</item>
+        <item>km</item>
+        <item>kn</item>
+        <item>ko</item>
+        <item>lo</item>
+        <item>lt</item>
+        <item>lv</item>
+        <item>mg</item>
+        <item>mi</item>
+        <item>mk</item>
+        <item>ml</item>
+        <item>mr</item>
+        <item>ms</item>
+        <item>mt</item>
+        <item>ne</item>
+        <item>no</item>
+        <item>pl</item>
+        <item>pt</item>
+        <item>ro</item>
+        <item>ru</item>
+        <item>si</item>
+        <item>sk</item>
+        <item>sl</item>
+        <item>so</item>
+        <item>sr</item>
+        <item>su</item>
+        <item>sv</item>
+        <item>sw</item>
+        <item>ta</item>
+        <item>te</item>
+        <item>tg</item>
+        <item>th</item>
+        <item>tr</item>
+        <item>uk</item>
+        <item>ur</item>
+        <item>uz</item>
+        <item>vi</item>
+        <item>yo</item>
+        <item>zh</item>
+        <item>zu</item>
+    </string-array>
+    <array name="material_colors">
+        <item>#fff44336</item>
+        <item>#ff9c27b0</item>
+        <item>#ff3f51b5</item>
+        <item>#ff03a9f4</item>
+        <item>#ff009688</item>
+        <item>#ff8bc34a</item>
+        <item>#ffffeb3b</item>
+        <item>#ffff9800</item>
+        <item>#ff795548</item>
+        <item>#ff000000</item>
+        <item>#ffffffff</item>
+    </array>
+    <string-array name="orientations_entry">
+        <item>Portrait</item>
+        <item>Landscape</item>
+    </string-array>
+    <string-array name="orientations_value">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="video_bitrates_entry">
+        <item>800</item>
+        <item>1200</item>
+        <item>1600</item>
+        <item>2000</item>
+        <item>2500</item>
+        <item>5000</item>
+        <item>10000</item>
+        <item>12000</item>
+        <item>16000</item>
+        <item>20000</item>
+        <item>25000</item>
+    </string-array>
+    <string-array name="video_bitrates_value">
+        <item>800</item>
+        <item>1200</item>
+        <item>1600</item>
+        <item>2000</item>
+        <item>2500</item>
+        <item>5000</item>
+        <item>10000</item>
+        <item>12000</item>
+        <item>16000</item>
+        <item>20000</item>
+        <item>25000</item>
+    </string-array>
+    <string-array name="video_framerates_entry">
+        <item>15</item>
+        <item>25</item>
+        <item>30</item>
+        <item>60</item>
+        <item>90</item>
+        <item>120</item>
+    </string-array>
+    <string-array name="video_framerates_value">
+        <item>15</item>
+        <item>25</item>
+        <item>30</item>
+        <item>60</item>
+        <item>90</item>
+        <item>120</item>
+    </string-array>
+    <string-array name="video_resolutions_entry">
+        <item>480x360</item>
+        <item>720x480</item>
+        <item>1280x720</item>
+        <item>1920x1080</item>
+        <item>3860x2160</item>
+    </string-array>
+    <string-array name="video_resolutions_value">
+        <item>480x360</item>
+        <item>720x480</item>
+        <item>1280x720</item>
+        <item>1920x1080</item>
+        <item>3860x2160</item>
+    </string-array>
+</resources>

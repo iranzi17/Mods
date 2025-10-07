@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="dimen" name="abc_dialog_fixed_width_major">50.0%</item>
+    <item type="dimen" name="abc_dialog_fixed_width_minor">70.00001%</item>
+    <item type="dimen" name="abc_dialog_min_width_major">45.000004%</item>
+    <item type="dimen" name="abc_dialog_min_width_minor">72.0%</item>
+    <dimen name="corners">20.0dip</dimen>
+    <dimen name="icon_play_view_size">120.0dip</dimen>
+    <dimen name="margin_action">12.0dip</dimen>
+    <dimen name="margin_double_action">24.0dip</dimen>
+    <dimen name="padding_expanded_view">200.0dip</dimen>
+    <dimen name="padding_parent_start_end">130.0dip</dimen>
+</resources>

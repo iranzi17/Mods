@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <corners android:radius="10.0dip" />
+            <stroke android:width="2.0dip" android:color="@color/colorAccent" android:dashWidth="8.0dip" android:dashGap="6.0dip" />
+        </shape>
+    </item>
+    <item android:id="@id/none_action_item" android:drawable="@drawable/ic_add" android:left="30.0dip" android:top="30.0dip" android:right="30.0dip" android:bottom="30.0dip" />
+</layer-list>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.preference.PreferenceCategory android:title="@string/music_control" android:key="category_music_control">
+        <androidx.preference.Preference android:icon="@drawable/ic_player" android:title="@string/choose_music_player_firstly" android:key="choose_music_player" />
+        <androidx.preference.SwitchPreferenceCompat android:icon="@drawable/ic_music_expand" android:title="@string/show_music_panel" android:key="music_layout_expand" android:summary="@string/show_music_panel_details" android:defaultValue="false" />
+    </androidx.preference.PreferenceCategory>
+</androidx.preference.PreferenceScreen>

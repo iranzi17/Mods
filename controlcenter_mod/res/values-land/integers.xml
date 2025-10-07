@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="animation_time_show_control_down">250</integer>
+    <integer name="animation_time_show_control_right_left">480</integer>
+    <integer name="animation_time_show_control_up">460</integer>
+    <integer name="animation_time_show_control_up_top">250</integer>
+    <integer name="mtrl_calendar_header_orientation">0</integer>
+    <integer name="mtrl_calendar_selection_text_lines">6</integer>
+</resources>

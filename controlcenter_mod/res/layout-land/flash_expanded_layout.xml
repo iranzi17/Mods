@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.Guideline android:orientation="vertical" android:id="@id/guideline1" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.43" />
+    <androidx.constraintlayout.widget.Guideline android:orientation="vertical" android:id="@id/guideline2" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.57" />
+    <androidx.constraintlayout.widget.Guideline android:orientation="horizontal" android:id="@id/guideline7" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.05" />
+    <androidx.constraintlayout.widget.Guideline android:orientation="horizontal" android:id="@id/guideline8" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.95" />
+    <RelativeLayout android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/guideline8" app:layout_constraintEnd_toStartOf="@id/guideline2" app:layout_constraintStart_toStartOf="@id/guideline1" app:layout_constraintTop_toTopOf="@id/guideline7">
+        <com.luutinhit.customui.ImageViewClickAnimation android:id="@id/icon_flash_expanded" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_margin="@dimen/margin_text" android:src="@drawable/ic_brightness_white" android:layout_centerHorizontal="true" />
+        <com.luutinhit.customui.VerticalSeekBar android:id="@id/seekbar_flash_expanded" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="@dimen/margin_text" android:max="1000" android:progress="200" android:progressDrawable="@drawable/progress_drawable_large" android:layout_above="@id/flash_on_off_expanded" android:layout_below="@id/icon_flash_expanded" />
+        <com.luutinhit.customui.ImageViewClickAnimation android:id="@id/flash_on_off_expanded" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_margin="@dimen/margin_text" android:src="@drawable/action_flash_flicker" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</merge>

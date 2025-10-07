@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.luutinhit.customui.ActionView android:background="@drawable/action_view_right" android:layout_width="4.0dip" android:layout_height="fill_parent" android:layout_marginLeft="16.0dip" android:hapticFeedbackEnabled="true" android:contentDescription="@string/app_name" android:alpha="0.8"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/container" android:background="@drawable/item_color_anim" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/textlight30" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="10.0dip" android:layout_alignParentBottom="true" />
+    <androidx.appcompat.widget.AppCompatImageView android:id="@id/remove_icon" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_add_round" android:layout_centerVertical="true" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="start|center" android:orientation="horizontal" android:id="@id/linear" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/remove_icon" android:layout_centerVertical="true">
+        <androidx.appcompat.widget.AppCompatImageView android:layout_gravity="center" android:id="@id/icon_app" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="10.0dip" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/textlight" android:layout_gravity="start|center" android:id="@id/tvItemName" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:fontFamily="sans-serif" />
+    </LinearLayout>
+</RelativeLayout>
