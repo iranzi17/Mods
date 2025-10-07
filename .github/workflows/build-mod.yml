@@ -8,6 +8,11 @@ jobs:
   build:
     name: Rebuild modded APK
     runs-on: ubuntu-latest
+    env:
+      ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+      ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+      ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+      ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -33,31 +38,25 @@ jobs:
           zipalign -v -p 4 artifacts/ControlCenter15-mod-unsigned.apk artifacts/ControlCenter15-mod-aligned.apk
 
       - name: Decode signing keystore
-        if: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
-        env:
-          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        if: ${{ env.ANDROID_KEYSTORE_BASE64 != '' }}
         run: |
-          echo "$KEYSTORE_BASE64" | base64 --decode > android-signing-keystore.jks
+          echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > android-signing-keystore.jks
 
       - name: Sign APK
-        if: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
-        env:
-          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
-          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        if: ${{ env.ANDROID_KEYSTORE_BASE64 != '' }}
         run: |
-          KEY_PASS=${KEY_PASSWORD:-$KEYSTORE_PASSWORD}
+          KEY_PASS=${ANDROID_KEY_PASSWORD:-$ANDROID_KEYSTORE_PASSWORD}
           export KEY_PASS
           apksigner sign \
             --ks android-signing-keystore.jks \
-            --ks-pass env:KEYSTORE_PASSWORD \
-            --ks-key-alias "$KEY_ALIAS" \
+            --ks-pass env:ANDROID_KEYSTORE_PASSWORD \
+            --ks-key-alias "$ANDROID_KEY_ALIAS" \
             --key-pass env:KEY_PASS \
             artifacts/ControlCenter15-mod-aligned.apk
           mv artifacts/ControlCenter15-mod-aligned.apk artifacts/ControlCenter15-mod.apk
 
       - name: Use aligned APK when signing is skipped
-        if: ${{ secrets.ANDROID_KEYSTORE_BASE64 == '' }}
+        if: ${{ env.ANDROID_KEYSTORE_BASE64 == '' }}
         run: mv artifacts/ControlCenter15-mod-aligned.apk artifacts/ControlCenter15-mod.apk
 
       - name: Upload rebuilt APK
