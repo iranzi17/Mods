@@ -3,167 +3,28 @@ name: Build Control Center Mod
 on:
   push:
   pull_request:
-  workflow_dispatch:
 
 jobs:
   build:
-    name: Rebuild, align & sign APK (with cache)
+    name: Rebuild modded APK
     runs-on: ubuntu-latest
-
-    env:
-      APKTOOL_VER: 2.12.1
-      BUILD_TOOLS: 36.0.0
-      MOD_DIR: controlcenter_mod
-      OUT_DIR: artifacts
-      BASE_NAME: ControlCenter_Mod
-      APKTOOL_JAR: ~/.cache/apktool/apktool_${{ env.APKTOOL_VER }}.jar
-
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set up Java 17
+      - name: Set up Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "17"
 
-      # ---------- ANDROID SDK CACHE ----------
-      # Caches build-tools + platform-tools and SDK metadata
-      - name: Restore Android SDK cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ${{ env.ANDROID_HOME }}/build-tools/${{ env.BUILD_TOOLS }}
-            ${{ env.ANDROID_HOME }}/platform-tools
-            ~/.android
-          key: ${{ runner.os }}-android-${{ env.BUILD_TOOLS }}-v1
-
-      # We still run setup-android to set ANDROID_HOME and make sure tools exist;
-      # sdkmanager will skip downloads if the cache already provided them.
-      - name: Install Android SDK build-tools
-        uses: android-actions/setup-android@v3
-        with:
-          packages: |
-            build-tools;${{ env.BUILD_TOOLS }}
-            platform-tools
-
-      # ---------- APKTOOL FRAMEWORK CACHE ----------
-      - name: Restore Apktool framework cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.local/share/apktool
-            ~/.apktool
-          key: ${{ runner.os }}-apktool-fw-${{ env.APKTOOL_VER }}-v1
-
-      # Optional cache for the apktool jar we download
-      - name: Restore Apktool JAR cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/apktool
-          key: ${{ runner.os }}-apktool-jar-${{ env.APKTOOL_VER }}-v1
-
-      - name: Ensure apktool.jar
-        run: |
-          set -e
-          mkdir -p "$(dirname "${APKTOOL_JAR}")"
-          if [ ! -f "${APKTOOL_JAR}" ]; then
-            echo "Downloading apktool ${APKTOOL_VER}…"
-            curl -L -o "${APKTOOL_JAR}" \
-              "https://github.com/iBotPeaches/Apktool/releases/download/v${APKTOOL_VER}/apktool_${APKTOOL_VER}.jar"
-          fi
-          ls -lh "${APKTOOL_JAR}"
-
-      # (Optional) clean previous APKs in repo root to avoid confusion
-      - name: Clean previous APKs in repo root
-        run: |
-          rm -f ControlCenter_Mod*.apk || true
-          rm -f ControlCenter15-mod*.apk || true
-
-      # Sanity check before building
-      - name: Validate mod directory
-        run: |
-          set -e
-          test -f "${MOD_DIR}/apktool.yml" || {
-            echo "::error::${MOD_DIR}/apktool.yml not found. Make sure the decompiled project is in '${MOD_DIR}'";
-            exit 1;
-          }
-
-      # Build with apktool
       - name: Rebuild APK with apktool
         run: |
-          set -e
-          mkdir -p "${OUT_DIR}"
-          java -jar "${APKTOOL_JAR}" b "${MOD_DIR}" -o "${OUT_DIR}/${BASE_NAME}.apk"
-          ls -lh "${OUT_DIR}"
+          mkdir -p artifacts
+          java -jar apktool_2.12.1.jar b controlcenter_mod -o artifacts/ControlCenter15-mod.apk
 
-      # Zipalign
-      - name: Zipalign APK
-        run: |
-          set -e
-          ZIPALIGN="${ANDROID_HOME}/build-tools/${BUILD_TOOLS}/zipalign"
-          "${ZIPALIGN}" -p 4 "${OUT_DIR}/${BASE_NAME}.apk" "${OUT_DIR}/${BASE_NAME}_aligned.apk"
-          ls -lh "${OUT_DIR}"
-
-      # Sign APK (release keystore via secrets, else debug)
-      - name: Sign APK
-        env:
-          ANDROID_KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_B64 }}
-          ANDROID_KEY_ALIAS:    ${{ secrets.ANDROID_KEY_ALIAS }}
-          ANDROID_KEY_PASS:     ${{ secrets.ANDROID_KEY_PASS }}
-          ANDROID_STORE_PASS:   ${{ secrets.ANDROID_STORE_PASS }}
-        run: |
-          set -e
-          APKIN="${OUT_DIR}/${BASE_NAME}_aligned.apk"
-          APKOUT="${OUT_DIR}/${BASE_NAME}_signed.apk"
-          APKSIGNER="${ANDROID_HOME}/build-tools/${BUILD_TOOLS}/apksigner"
-
-          if [ -n "${ANDROID_KEYSTORE_B64}" ] && [ -n "${ANDROID_KEY_ALIAS}" ] \
-             && [ -n "${ANDROID_KEY_PASS}" ] && [ -n "${ANDROID_STORE_PASS}" ]; then
-            echo "Using release keystore from secrets."
-            echo "${ANDROID_KEYSTORE_B64}" | base64 -d > keystore.jks
-            "${APKSIGNER}" sign \
-              --ks keystore.jks \
-              --ks-key-alias "${ANDROID_KEY_ALIAS}" \
-              --ks-pass "pass:${ANDROID_STORE_PASS}" \
-              --key-pass "pass:${ANDROID_KEY_PASS}" \
-              --out "${APKOUT}" \
-              "${APKIN}"
-          else
-            echo "No release keystore secrets found. Generating debug keystore…"
-            keytool -genkeypair -noprompt \
-              -keystore debug.keystore -storepass android \
-              -alias androiddebugkey -keypass android \
-              -dname "CN=Android Debug,O=Android,C=US" \
-              -keyalg RSA -keysize 2048 -validity 10000
-            "${APKSIGNER}" sign \
-              --ks debug.keystore \
-              --ks-key-alias androiddebugkey \
-              --ks-pass pass:android \
-              --key-pass pass:android \
-              --out "${APKOUT}" \
-              "${APKIN}"
-          fi
-
-      # Verify signature
-      - name: Verify signed APK
-        run: |
-          set -e
-          APKSIGNER="${ANDROID_HOME}/build-tools/${BUILD_TOOLS}/apksigner"
-          "${APKSIGNER}" verify --verbose "${OUT_DIR}/${BASE_NAME}_signed.apk" || {
-            echo "::error::Signature verification failed"
-            exit 1
-          }
-          echo "Signature OK ✅"
-          ls -lh "${OUT_DIR}"
-
-      # Upload outputs
-      - name: Upload artifacts
+      - name: Upload rebuilt APK
         uses: actions/upload-artifact@v4
         with:
-          name: ControlCenter_Mod_${{ github.sha }}
-          path: |
-            artifacts/ControlCenter_Mod.apk
-            artifacts/ControlCenter_Mod_aligned.apk
-            artifacts/ControlCenter_Mod_signed.apk
+          name: ControlCenter15-mod
+          path: artifacts/ControlCenter15-mod.apk
